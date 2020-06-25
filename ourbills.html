@@ -1,0 +1,81 @@
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" href="topicon.png">
+        <meta charset="utf-8">
+        <title>Our Bills</title>
+        <link rel="stylesheet" href="style.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    </head>
+    <div class="topnav" id="myTopnav">
+
+      <a href="home.html">Home</a>
+      <a href="emailrep.html">Email Your Representative</a>
+      <a href="ourbills.html" class="active">Our Bills</a>
+      <a href="https://docs.google.com/document/d/1Ihe6lwi6ua-xju9lmiHNeDCkcdCWfs0KUeO3TO5YM2o/edit?usp=sharing">BLM Resources</a>
+      <a href="faq.html">FAQ</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    <style>
+      body {
+        padding-bottom: 30px;
+      }
+    </style>
+    <body>
+      <div class="boxed" style="background-color: #EDEBE6;">
+        <h4><span>Our Bills</span></h4>
+        <p style="font-size: medium; text-align: center;">Learn more about our latest bill, <a href="antonslaw.html" style="color:black;">Anton's Law</a></p>
+        <body>
+          <button class="accordion" style="background-color: #EDEBE6;">Racial Oppression</button>
+          <div class="panel" style="background-color: #EDEBE6;">
+            <button class="accordion" style="border-left: 1px solid black;background-color: #EDEBE6;">Bill A3566</button>
+            <div class="panel" style="border-bottom: 1px solid black;background-color: #EDEBE6;">
+              <p style="padding-left: 5px;">A bill asking that falsely reporting an incident be a specified offense for the purposes of hate crimes. <a style="color: black;" href="billa3566.html">Learn More</a></p>
+            </div>
+          </div>
+          <br>
+          <button class="accordion" style="background-color: #EDEBE6;">Police Reform</button>
+          <div class="panel" style="background-color: #EDEBE6;">
+            <button class="accordion" style="border-left: 1px solid black;background-color: #EDEBE6;">Ending Qualified Immunity Act</button>
+            <div class="panel" style="border-bottom: 1px solid black;background-color: #EDEBE6;">
+              <p style="padding-left: 5px;">A bill asking to end qualified immunity, which protects police officers when they commit crimes that would otherwise receive punishment. <a style="color: black;" href="endingqual.html">Learn More</a></p>
+            </div>
+            <button class="accordion" style="border-left: 1px solid black;background-color: #EDEBE6;">Anton’s Law</button>
+            <div class="panel" style="background-color: #EDEBE6;">
+              <p style="padding-left: 5px;">A bill asking to reform the previous standards for deadly force used by officers and establish new standards for hiring officers. <a style="color: black;" href="antonslaw.html">Learn More</a></p>
+            </div>
+            
+          </div>
+    </body>
+    <script>
+       var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+      </script>
+      <div class="footer">
+        <p>
+          ©2020 by Maryland For Justice.
+        </p>
+      </div>
+</html>
