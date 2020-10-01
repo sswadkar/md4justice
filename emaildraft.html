@@ -786,7 +786,7 @@ function emailsend() {
   if ((document.getElementById("address").value.length != 0) && (advocate != "select")){
     var listofemails = [];
     var countything;
-    $.getJSON('https://www.googleapis.com/civicinfo/v2/representatives?address='.concat(addressuser,"&key=AIzaSyA8xYv8CCjRW_P2YNM-Uo1Gkjs1tECz7zM"),  function(data){ //CHANGE BACK THE API KEY
+    $.getJSON('https://www.googleapis.com/civicinfo/v2/representatives?address='.concat(addressuser,"&key=<INSERT_API_KEY>"),  function(data){ //CHANGE BACK THE API KEY
       if (advocate == "HOR") {
         for (i = 0; i < data.officials.length; i++) {
           if (typeof (data.officials[i].emails) !== 'undefined'){ 
