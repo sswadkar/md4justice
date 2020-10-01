@@ -1,5 +1,13 @@
 <html>
     <head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171148571-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-171148571-1');
+    </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" href="topicon.png">
         <meta charset="utf-8">
@@ -11,8 +19,9 @@
 
         <a href="home.html">Home</a>
         <a href="emailrep.html">Email Your Representative</a>
+        <a href="emaildraft.html">Create Your Own Email</a>
+        <a href="mocoemail.html">Email MCPS</a>
         <a href="ourbills.html">Our Bills</a>
-        <a href="https://docs.google.com/document/d/1Ihe6lwi6ua-xju9lmiHNeDCkcdCWfs0KUeO3TO5YM2o/edit?usp=sharing">BLM Resources</a>
         <a href="faq.html" class="active">FAQ</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
@@ -40,6 +49,10 @@
   <div class="boxed">
     <h2>Frequently Asked Questions</h2>
     <body>
+      <button class="accordion">When I click the send button it opens up a blank tab or quickly opens and closes a tab, how do I fix this?</button>
+      <div class="panel">
+        <p>Here's a <a style="color:black;" href="https://youtu.be/bxw2jSg49KY">video</a> that explains how to configure your browser settings so you can easily open mailto links so you can send an email to your representative.  </p>
+      </div>
       <button class="accordion">How can I help?</button>
       <div class="panel">
         <p>Our entire system is based on the idea that as one united force, we can truly make a difference. Many of the ideas we use for our emails are suggested to us by people. Informing us, using the contact page, about new bills and ideas can help fuel our next proposal. </p>
@@ -52,13 +65,9 @@
       <div class="panel">
         <p>Once you click send, our website determines your district representative’s email address through a Google service (<a style="color:black;" href="https://developers.google.com/civic-information/">Google Civic Information</a>). This avoids sending your address anywhere and the process of using your address to find your district’s representative’s email is completely local, which means that it is done on your machine. Your address is also put in the email you are sending so that your representative knows that you are their constituent. If you still wish to not input your address, you can find your district representative’s email address someplace else and input it manually into our site.</p>
       </div>
-      <button class="accordion">When I click send, the email address of the recipient empty?</button>
+      <button class="accordion">When I click send, why is the email address of the recipient empty?</button>
       <div class="panel">
         <p>If this is the case, then that means the address you have inputted is not that of a home. The API we use allows us to determine your district and therefore your district’s representative’s email without having to send your address anywhere. Unfortunately, this is not foolproof and this requires us to use home addresses. If using your home address still doesn’t work, please improve this site by directly reporting this to <a style="color:black;" href="https://docs.google.com/forms/d/e/1FAIpQLScFpFTOkTpm0YoerLLprY_ySS9PRXLsu27SM01hebHqkefW2Q/viewform">Google Civic Information</a> as they’ll be able to fix this problem.</p>
-      </div>
-      <button class="accordion">How do I input multiple emails in the MD Representative's Email box?</button>
-      <div class="panel">
-        <p>Type in each email after the other and separate the emails by commas with no spaces inbetween.</p>
       </div>
       <button class="accordion">I have an idea for a bill that could be added to this website, how do I reach out to you about it?</button>
       <div class="panel">

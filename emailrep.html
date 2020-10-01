@@ -1,6 +1,14 @@
 <html>
 <html lang="en" dir="ltr">
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171148571-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-171148571-1');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="topicon.png">
     <meta charset="utf-8">
@@ -10,7 +18,26 @@
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+$(document).ready(function(){
+
+var preSelected = getParameterByName("pre");
+
+if(preSelected == "1")
+{
+
+$('select[name="Bills"]').val("Maryland House Bill 488 & Maryland Senate Bill 554");
+
+}
+});
+</script>
   </head>
   <body>
   <style>
@@ -18,9 +45,10 @@
   <div class="topnav" id="myTopnav">
 
     <a href="home.html">Home</a>
-    <a href="email.html" class="active">Email Your Representative</a>
+    <a href="emailrep.html" class="active">Email Your Representative</a>
+    <a href="emaildraft.html">Create Your Own Email</a>
+    <a href="mocoemail.html">Email MCPS</a>
     <a href="ourbills.html">Our Bills</a>
-    <a href="https:/docs.google.com/document/d/1Ihe6lwi6ua-xju9lmiHNeDCkcdCWfs0KUeO3TO5YM2o/edit">BLM Resources</a>
     <a href="faq.html">FAQ</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
@@ -41,23 +69,85 @@
       padding-bottom: 50px;
     }
   </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          if (window.location.href.indexOf("lgbtqpanicdefensebill") > -1) {
+            document.getElementById("lgbtq").selected = "true";
+          }
+          if (window.location.href.indexOf("inclusiveschoolsact") > -1) {
+            document.getElementById("isa").selected = "true";
+          }
+        });
+  </script>
   <div class="email">
   <h1>Email Your Representative</h1>
   <div class="p">
     <p>If you're uncomfortable with providing your home address you may leave it empty and fill out your information in the email template.<p>
   </div>
+  <form>
+  <p style="font-size: small; color: red;" id="error"></p>
   <div class="textbox">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <input style="font-family: Montserrat; font-size: medium; font-weight: 500;" type="text" placeholder="Full Name" required="required" id="username">
+    <input style="font-family: Montserrat; font-size: medium; font-weight: 500;" type="text" placeholder="Full Name" id="name" autocomplete="on">
+  </div>
+  
+  <div class="textbox">
+    <i class="fa fa-home" aria-hidden="true"></i>
+    <input style="font-family: Montserrat; font-size: medium; font-weight: 500;" type="text" placeholder="Address" id="address">
   </div>
   <div class="textbox">
     <i class="fa fa-gavel" aria-hidden="true"></i>
-    <input style="font-family: Montserrat; font-size: medium; font-weight: 500;" type="text" placeholder="Bill" required="required" id="Bills">
+    <div class="select">
+    <select style="font-family: Montserrat; font-size: 15px; font-weight: 500; width: 240px;" type="text" placeholder="Bill" required="required" id="Bills" name="bills">
+      <option value="none" selected disabled hidden> 
+        Select a Bill 
+    </option> 
+      <option value="Anton's Law">Anton's Law</option>
+      <option value="Bill A3566">Bill A3566</option>
+      <option value="Ending Qualified Immunity Act">EQIA</option>
+      <option id="lgbtq" value="Maryland House Bill 488 and Maryland Senate Bill 554">End LGBTQ+ Panic Defense</option>
+      <option id="isa" value="MD Senate Bill 993 (Inclusive School's Act)">Inclusive School's Act</option>
+    </select>
   </div>
-  <div class="textbox">
-    <i class="fa fa-home" aria-hidden="true"></i>
-    <input style="font-family: Montserrat; font-size: medium; font-weight: 500;" type="text" placeholder="Address" id="useraddress">
-    </div>
+  <style>
+    select {
+    border: 1px solid #fff;
+    background-color: rgba(255,255,255,.5);
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
+    }
+    select option {
+      margin: 40px;
+      background: #EDEBE6;
+      color: black;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+      font-size: 15px;;
+    }
+    option:hover{
+background-color: rgba(0, 0, 0, 0.4);
+}
+    @media only screen and (max-device-width: 480px) {
+      select {
+    border: 1px solid #fff;
+    background-color: rgba(255,255,255,.5);
+    padding: 5px;
+    border-radius: 5px;
+    }
+    select option {
+      margin: 40px;
+      background: #EDEBE6;
+      color: black;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    }
+    option:hover{
+background-color: rgba(0, 0, 0, 0.4);
+}
+}
+  </style>
+  </div>
+</form>
     <center>
       <button class="btn" id=send style="width: 250px; border-radius: 5px; font-family: Montserrat;" onclick="window.open(String(emailsend()))">Send</button>
     </center>
@@ -66,9 +156,9 @@
       Powered by <a style="color:black;" href="https://developers.google.com/civic-information/">Google Civic Information</a>
     </p>
     <i style = "font-size: 10px;">
-      We have no way to save your address and promise you that it is only used to find your district's representative's email
+        Have any questions/difficulties? Check out our <a style="color:black;" href="faq.html">FAQ</a>
     </i>
-  </div>
+</div>
 </div>
   <div class="footer">
     <p>
@@ -76,32 +166,15 @@
     </p>
   </div>
 </body>
-<script>    
-$(document).ready(function() {
-    emailt();
-    emailsend();
-});
-function emailt() {
-    var Bills = ["Anton's Law",
-        'Bill A3566', 
-        'Ending Qualified Immunity Act',
-        ];
-    $('#Bills').autocomplete({
-        source: Bills,
-        minLength: 0,
-        scroll: true
-    }).focus(function() {
-        $(this).autocomplete("search", "");
-    });
-}
-
+<script>
 function emailsend() {
     $.ajaxSetup({
     async: false
 });
-  var localname = document.getElementById("username").value;
-  var addressuser = document.getElementById("useraddress").value.replace(/ /g,"%20");
+  var localname = document.getElementById("name").value;
+  var addressuser = document.getElementById("address").value.replace(/ /g,"%20");
   var advocate = document.getElementById("Bills").value;
+  
   var zipcodecounty = {
     20601: "Charles County",
     20602: "Charles County",
@@ -725,16 +798,26 @@ function emailsend() {
   }
   var billsend = {
     "Bill A3566": "%20I%20am%20emailing%20today%20on%20behalf%20of%20the%20George%20Floyd%20case%20and%20the%20Black%20Lives%20Matter%20Movement%20as%20a%20whole.%20I%20am%20calling%20for%20the%20introduction%2C%20passing%2C%20and%20implementation%20of%20Assembly%20Bill%20A3566%2C%20originally%20introduced%20by%20New%20York%20Assemblyman%20Felix%20Ortiz%20and%20Sen.%20Brian%20Benjamin.%C2%A0This%20bill%20includes%20specifying%20falsely%20reporting%20an%20incident%20in%20the%20third%2C%20second%2C%20and%20first%20degrees%20as%20a%20hate%20crime.%20George%20Floyd%20was%20arrested%20under%20an%20implied%2C%20non-violent%20crime%20and%20bystanders%20claim%20that%20he%20never%20resisted%20his%20arrest.%20The%20approach%20the%20officers%20chose%20to%20take%20was%20one%20that%20resulted%20in%20murder%20and%20cannot%20be%20taken%20lightly.%20Chris%20Cooper%2C%20a%20black%20man%20who%20was%20bird-watching%20in%20Central%20Park%2C%20had%20the%20police%20called%20on%20him%20by%20a%20white%20woman%20claiming%20he%20was%20threatening%20her%20life.%20This%20happened%20only%20because%20of%20the%20color%20of%20his%20skin.%20Under%20this%20bill%2C%20what%20the%20woman%20did%20would%20be%20classified%20as%20a%20hate%20crime.%20Every%20single%20day%2C%20incidents%20are%20reported%20incorrectly%20simply%20based%20on%20racial%20biases.%20In%20many%20cases%2C%20the%20consequences%20are%20drastic.%20George%20Floyd%20and%20dozens%20of%20others%20deserve%20to%20be%20alive%20today%20if%20not%20for%20the%20gross%20abuse%20of%20power%20and%20anti-black%20sentiment%20exhibited%20by%20the%20Minneapolis%20Police%20Department%20and%20others%20across%20the%20nation.%20I%20ask%20that%20you%20introduce%20Assembly%20Bill%20A3566%20in%20order%20to%20properly%20protect%20and%20bring%20justice%20to%20people%20of%20color%20and%20other%20minorities%20in%20this%20state%20and%20hopefully%20one%20day%20our%20nation.%0A%0AThank%20you%2C%20%0A",
-    "Ending Qualified Immunity Act":"%20I%20am%20emailing%20today%20to%20ask%20you%20to%20voice%20support%20for%20the%20Ending%20Qualified%20Immunity%20Act%20(H.%20R.%207085)%2C%20introduced%20by%20Congressman%20Justin%20Amash%20(L-MI)%2C%20to%20our%20state%20Congresspeople.%20In%20light%20of%20the%20murder%20of%20George%20Floyd%20and%20the%20consequent%20anger%20over%20police%20brutality%2C%20we%20have%20seen%20how%20police%20officers%20are%20made%20immune%20by%20the%20law.%20Under%20qualified%20immunity%2C%20police%20are%20immune%20from%20liability%20unless%20the%20person%20whose%20rights%20they%20violated%20can%20show%20that%20there%20is%20a%20previous%20case%20in%20the%20same%20jurisdiction%2C%20involving%20the%20exact%20same%20facts%2C%20in%20which%20a%20court%20deemed%20the%20actions%20to%20be%20a%20constitutional%20violation.%20Even%20for%20the%20most%20heinous%20crimes%2C%20police%20have%20been%20protected%20by%20qualified%20immunity%20for%20far%20too%20long.%20The%20police%20work%20for%20the%20people%20and%20the%20people%20should%20not%20have%20to%20be%20denied%20justice%20because%20the%20judicial%20system%20is%20built%20against%20them.%20In%201982%2C%20the%20Supreme%20Court%20ruled%20that%20government%20officials%20had%20qualified%20immunity%20from%20civil%20rights%20lawsuits%20if%20their%20actions%20didn%E2%80%99t%20violate%20%E2%80%9Cclearly%20established%E2%80%9D%20rights.%20This%20has%20protected%20officers%20from%20being%20charged%20despite%20what%20they%20have%20done.%20Last%20year%2C%20Fresno%20officers%20were%20accused%20of%20stealing%20more%20than%20%24225%2C000.%20In%20Idaho%2C%20officers%20bombarded%20an%20innocent%20woman%E2%80%99s%20home%20with%20tear%20gas%20grenades.%20In%20Georgia%2C%20an%20officer%20who%20tried%20to%20kill%20a%20family%20dog%20accidentally%20shot%20a%2010-year-old%20boy%20instead.%20This%20man%2C%20and%20all%20the%20aforementioned%20officers%2C%20were%20not%20charged%20because%20of%20%E2%80%9Cqualified%20immunity%E2%80%9D.%20There%20is%20no%20reason%20government%20officials%20should%20be%20protected%20for%20violations%20that%20non-government%20officials%20are%20not.%20They%20are%20not%20above%20the%20law%2C%20and%20neither%20are%20we.%20I%20am%20asking%20you%20to%20voice%20support%20for%20the%20Ending%20Qualified%20Immunity%20Act%20(H.%20R.%207085)%20to%20our%20state%20Congresspeople.%0A%0AThank%20you%2C%0A"
+    "Ending Qualified Immunity Act":"%20I%20am%20emailing%20today%20to%20ask%20you%20to%20voice%20support%20for%20the%20Ending%20Qualified%20Immunity%20Act%20(H.%20R.%207085)%2C%20introduced%20by%20Congressman%20Justin%20Amash%20(L-MI)%2C%20to%20our%20state%20Congresspeople.%20In%20light%20of%20the%20murder%20of%20George%20Floyd%20and%20the%20consequent%20anger%20over%20police%20brutality%2C%20we%20have%20seen%20how%20police%20officers%20are%20made%20immune%20by%20the%20law.%20Under%20qualified%20immunity%2C%20police%20are%20immune%20from%20liability%20unless%20the%20person%20whose%20rights%20they%20violated%20can%20show%20that%20there%20is%20a%20previous%20case%20in%20the%20same%20jurisdiction%2C%20involving%20the%20exact%20same%20facts%2C%20in%20which%20a%20court%20deemed%20the%20actions%20to%20be%20a%20constitutional%20violation.%20Even%20for%20the%20most%20heinous%20crimes%2C%20police%20have%20been%20protected%20by%20qualified%20immunity%20for%20far%20too%20long.%20The%20police%20work%20for%20the%20people%20and%20the%20people%20should%20not%20have%20to%20be%20denied%20justice%20because%20the%20judicial%20system%20is%20built%20against%20them.%20In%201982%2C%20the%20Supreme%20Court%20ruled%20that%20government%20officials%20had%20qualified%20immunity%20from%20civil%20rights%20lawsuits%20if%20their%20actions%20didn%E2%80%99t%20violate%20%E2%80%9Cclearly%20established%E2%80%9D%20rights.%20This%20has%20protected%20officers%20from%20being%20charged%20despite%20what%20they%20have%20done.%20Last%20year%2C%20Fresno%20officers%20were%20accused%20of%20stealing%20more%20than%20%24225%2C000.%20In%20Idaho%2C%20officers%20bombarded%20an%20innocent%20woman%E2%80%99s%20home%20with%20tear%20gas%20grenades.%20In%20Georgia%2C%20an%20officer%20who%20tried%20to%20kill%20a%20family%20dog%20accidentally%20shot%20a%2010-year-old%20boy%20instead.%20This%20man%2C%20and%20all%20the%20aforementioned%20officers%2C%20were%20not%20charged%20because%20of%20%E2%80%9Cqualified%20immunity%E2%80%9D.%20There%20is%20no%20reason%20government%20officials%20should%20be%20protected%20for%20violations%20that%20non-government%20officials%20are%20not.%20They%20are%20not%20above%20the%20law%2C%20and%20neither%20are%20we.%20I%20am%20asking%20you%20to%20voice%20support%20for%20the%20Ending%20Qualified%20Immunity%20Act%20(H.%20R.%207085)%20to%20our%20state%20Congresspeople.%0A%0AThank%20you%2C%0A",
+    "MD Senate Bill 993 (Inclusive School's Act)":"%20I%20wanted%20to%20voice%20my%20support%20for%20SB0993%20regarding%20the%20Inclusive%20School%20Act.Discrimination%20still%20exists%20in%20our%20schools%20through%20bullying%2C%20harassment%2C%20and%20a%20lack%20of%20policies%20protecting%20students.%20In%202013%2C%20GLSEN%20did%20a%20national%20study%20and%20found%20these%20problems%20in%20our%20schools.%20The%20Baltimore%20Sun%20reported%20that%20%E2%80%9CBeyond%20peer%20harassment%2C%20the%20Maryland%20study%20%5Balong%20with%20other%20states%5D%20found%20many%20LGBT%20students%20in%20Maryland%20lacked%20supportive%20faculty%2C%20did%20not%20have%20access%20to%20educational%20materials%20on%20LGBT%20%E2%80%98people%2C%20history%2C%20and%20events%2C%E2%80%99%20and%20did%20not%20have%20LGBT-inclusive%20anti-bullying%20policies%20protecting%20them%20--%20all%20things%20that%20improve%20school%20climates%20for%20such%20students%20when%20in%20place.%E2%80%9DCurrently%2C%20Maryland%E2%80%99s%20education%20laws%20do%20not%20have%20codified%20anti-discrimination%20protections%2C%20meaning%20students%20who%20face%20discrimination%20don%E2%80%99t%20have%20policies%20that%20explicitly%20state%20how%20they%20can%20demand%20justice.%20Although%20federal%20law%20protects%20discrimination%20against%20students%2C%20these%20laws%20do%20not%20protect%20students%20from%20discrimination%20based%20on%20marital%20status%2C%20sexual%20orientation%2C%20or%20gender%20identity.%20To%20combat%20this%2C%20HB1204%20was%20introduced%20in%20the%20House%2C%20and%20after%20three%20readings%2C%20it%20was%20passed%20in%20the%20House.%20HB1204%20prohibits%20retaliation%20against%20a%20student%2C%20parent%2C%20or%20guardian%20who%20files%20a%20complaint%20of%20discrimination%20and%20cuts%20public%20funding%20to%20all%20schools%20that%20don%E2%80%99t%20put%20in%20anti-discrimination%20protections%20for%20all%20students%20K-12.%20Unfortunately%2C%20by%20the%20time%20it%20was%20sent%20to%20the%20Senate%2C%20an%20adjournment%20sine%20die%20went%20into%20place%2C%20and%20now%2C%20the%20bill%20may%20not%20be%20reintroduced%20into%20the%20Senate.SB0993%20would%20enshrine%20the%20Maryland%20State%20Department%20of%20Education%E2%80%99s%20existing%20non-discrimination%20guidance%20for%20students%20into%20law.%20Unlike%20laws%20regarding%20employment%2C%20fair%20housing%2C%20and%20others%2C%20Maryland%E2%80%99s%20education%20laws%20do%20not%20provide%20the%20legal%20protections%20of%20a%20codified%20anti-discrimination%20policy.%20%20This%20law%20is%20crucial%20in%20providing%20students%20with%20a%20safe%2C%20affirming%2C%20and%20inclusive%20environment%20to%20learn%20and%20express%20themselves%20without%20fear%20of%20violence%2C%20discrimination%2C%20or%20retaliation.%20Specifically%2C%20we%20need%20these%20protections%20for%20LGBTQ%20students%20who%20are%20more%20likely%20to%20experience%20discrimination%20and%20harassment%20with%20dangerous%20consequences.%20LGBTQ%20students%20have%20higher%20suicide%20rates%20than%20their%20heterosexual%20and%20cisgender%20peers.%20We%20need%20to%20do%20better%20to%20protect%20these%20students.%20This%20law%20would%20make%20schools%20provide%20pathways%20to%20file%20complaints%20and%20resolve%20cases%20of%20discrimination.%20I%20firmly%20believe%20that%20this%20state%20should%20create%20accepting%20and%20supporting%20atmospheres%20for%20every%20one%20of%20its%20students.%20To%20fully%20support%20our%20students%20and%20help%20them%20succeed%2C%20I%20feel%20it%20necessary%20to%20reintroduce%2C%20support%2C%20and%20pass%20SB0993%20regarding%20the%20Inclusive%20School%20Act."
   }
   var hbillsend = {
     "Anton's Law": "%20I%20am%20emailing%20today%20to%20ask%20you%20to%20support%20Anton%E2%80%99s%20Law%20(House%20Bill%201090).%20In%20light%20of%20the%20murder%20of%20George%20Floyd%20and%20the%20consequent%20anger%20over%20police%20brutality%2C%20another%20case%20from%202018%20has%20been%20brought%20to%20light.%20In%20September%20of%202018%2C%2019-year-old%20Anton%20Black%20was%20killed%20in%20an%20encounter%20with%20Greensboro%20police%20officers.%20His%20case%20scarily%20resembles%20that%20of%20George%20Floyd-%20a%20black%20man%2C%20yelling%20not%20to%20die%2C%20killed%20by%20force%20by%20a%20handful%20of%20officers.%20This%20bill%20would%20seek%20to%20modernize%20standards%20for%20the%20use%20of%20deadly%20force%20by%20officers%20and%20reform%20the%20Maryland%20Public%20Information%20Act%2C%20which%20prevents%20some%20information%20from%20being%20shared%20with%20the%20public%20while%20shielding%20personnel%20files%20of%20police%20officers.%20It%20would%20also%20remove%20privileges%20that%20currently%20allow%20police%20officers%20only%20to%20be%20interrogated%20and%20investigated%20by%20sworn%20officers%20and%20would%20establish%20police%20use-of-force%20standards.%20The%20bill%20was%20introduced%20last%20year%20but%20was%20pushed%20down%20by%20opposition%20from%20the%20police%20officers.%20Now%20that%20the%20Black%20Lives%20Matter%20movement%20is%20gaining%20more%20traction%2C%20it%E2%80%99s%20necessary%20for%20Anton%E2%80%99s%20Law%20to%20pass.%20I%20am%20asking%20for%20you%20to%20support%20and%20help%20pass%20Anton%E2%80%99s%20Law%20(House%20Bill%201090).%0D%0A%0D%0AThank%20you%2C%0D%0A"
-
   }
-  if ((document.getElementById("useraddress").value.length != 0)){
+  var hsbillsend = {
+    "Maryland House Bill 488 and Maryland Senate Bill 554": "%20I%20want%20to%20voice%20my%20support%20for%20Maryland%20House%20Bill%20488%20and%20Senate%20Bill%20554%20regarding%20banning%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense.%20LGBTQ%2B%20panic%20defense%20is%20a%20legal%20strategy%20that%20asks%20a%20jury%20to%20find%20that%20a%20victim%E2%80%99s%20sexual%20orientation%20or%20gender%20identity%2Fexpression%20is%20to%20blame%20for%20a%20defendant%E2%80%99s%20violent%20reaction%2C%20including%20murder.%20Although%20the%20LGBTQ%2B%20Panic%20Defense%20has%20been%20debunked%20and%20removed%20from%20the%20DSM%20by%20the%20American%20Psychological%20Association%20in%201973%2C%20legal%20defense%20teams%20continue%20to%20use%20it.%20It%20is%20still%20legal%20in%2040%20states.%20I%20don%E2%80%99t%20stand%20for%20this-%20being%20outraged%20at%20someone%E2%80%99s%20sexual%20orientation%20is%20no%20justification%20for%20violence%2C%20especially%20murder.%20One%20of%20the%20most%20recognized%20cases%20that%20employed%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense%20was%20that%20of%20Matthew%20Shepard%20in%201998.%20Shepard%2C%20a%2021-year-old%20college%20student%2C%20was%20beaten%20to%20death%20by%20two%20other%20men%20who%20attempted%20to%20use%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense%20to%20excuse%20their%20actions.%20This%20legal%20tactic%20has%20been%20banned%20in%2010%20states%2C%20and%20Maryland%20is%20one%20of%20the%209%20states%20working%20on%20banning%20it%20currently.%20I%20strongly%20urge%20you%20to%20support%20and%20push%20for%20passing%20Maryland%20House%20Bill%20488%20and%20Senate%20Bill%20553%2C%20about%20banning%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense.%0D%0A%0D%0ASincerely%2C%0D%0A"
+  }
+  var allbills = {
+    "Bill A3566": "%20I%20am%20emailing%20today%20on%20behalf%20of%20the%20George%20Floyd%20case%20and%20the%20Black%20Lives%20Matter%20Movement%20as%20a%20whole.%20I%20am%20calling%20for%20the%20introduction%2C%20passing%2C%20and%20implementation%20of%20Assembly%20Bill%20A3566%2C%20originally%20introduced%20by%20New%20York%20Assemblyman%20Felix%20Ortiz%20and%20Sen.%20Brian%20Benjamin.%C2%A0This%20bill%20includes%20specifying%20falsely%20reporting%20an%20incident%20in%20the%20third%2C%20second%2C%20and%20first%20degrees%20as%20a%20hate%20crime.%20George%20Floyd%20was%20arrested%20under%20an%20implied%2C%20non-violent%20crime%20and%20bystanders%20claim%20that%20he%20never%20resisted%20his%20arrest.%20The%20approach%20the%20officers%20chose%20to%20take%20was%20one%20that%20resulted%20in%20murder%20and%20cannot%20be%20taken%20lightly.%20Chris%20Cooper%2C%20a%20black%20man%20who%20was%20bird-watching%20in%20Central%20Park%2C%20had%20the%20police%20called%20on%20him%20by%20a%20white%20woman%20claiming%20he%20was%20threatening%20her%20life.%20This%20happened%20only%20because%20of%20the%20color%20of%20his%20skin.%20Under%20this%20bill%2C%20what%20the%20woman%20did%20would%20be%20classified%20as%20a%20hate%20crime.%20Every%20single%20day%2C%20incidents%20are%20reported%20incorrectly%20simply%20based%20on%20racial%20biases.%20In%20many%20cases%2C%20the%20consequences%20are%20drastic.%20George%20Floyd%20and%20dozens%20of%20others%20deserve%20to%20be%20alive%20today%20if%20not%20for%20the%20gross%20abuse%20of%20power%20and%20anti-black%20sentiment%20exhibited%20by%20the%20Minneapolis%20Police%20Department%20and%20others%20across%20the%20nation.%20I%20ask%20that%20you%20introduce%20Assembly%20Bill%20A3566%20in%20order%20to%20properly%20protect%20and%20bring%20justice%20to%20people%20of%20color%20and%20other%20minorities%20in%20this%20state%20and%20hopefully%20one%20day%20our%20nation.%0A%0AThank%20you%2C%20%0A",
+    "Ending Qualified Immunity Act":"%20I%20am%20emailing%20today%20to%20ask%20you%20to%20voice%20support%20for%20the%20Ending%20Qualified%20Immunity%20Act%20(H.%20R.%207085)%2C%20introduced%20by%20Congressman%20Justin%20Amash%20(L-MI)%2C%20to%20our%20state%20Congresspeople.%20In%20light%20of%20the%20murder%20of%20George%20Floyd%20and%20the%20consequent%20anger%20over%20police%20brutality%2C%20we%20have%20seen%20how%20police%20officers%20are%20made%20immune%20by%20the%20law.%20Under%20qualified%20immunity%2C%20police%20are%20immune%20from%20liability%20unless%20the%20person%20whose%20rights%20they%20violated%20can%20show%20that%20there%20is%20a%20previous%20case%20in%20the%20same%20jurisdiction%2C%20involving%20the%20exact%20same%20facts%2C%20in%20which%20a%20court%20deemed%20the%20actions%20to%20be%20a%20constitutional%20violation.%20Even%20for%20the%20most%20heinous%20crimes%2C%20police%20have%20been%20protected%20by%20qualified%20immunity%20for%20far%20too%20long.%20The%20police%20work%20for%20the%20people%20and%20the%20people%20should%20not%20have%20to%20be%20denied%20justice%20because%20the%20judicial%20system%20is%20built%20against%20them.%20In%201982%2C%20the%20Supreme%20Court%20ruled%20that%20government%20officials%20had%20qualified%20immunity%20from%20civil%20rights%20lawsuits%20if%20their%20actions%20didn%E2%80%99t%20violate%20%E2%80%9Cclearly%20established%E2%80%9D%20rights.%20This%20has%20protected%20officers%20from%20being%20charged%20despite%20what%20they%20have%20done.%20Last%20year%2C%20Fresno%20officers%20were%20accused%20of%20stealing%20more%20than%20%24225%2C000.%20In%20Idaho%2C%20officers%20bombarded%20an%20innocent%20woman%E2%80%99s%20home%20with%20tear%20gas%20grenades.%20In%20Georgia%2C%20an%20officer%20who%20tried%20to%20kill%20a%20family%20dog%20accidentally%20shot%20a%2010-year-old%20boy%20instead.%20This%20man%2C%20and%20all%20the%20aforementioned%20officers%2C%20were%20not%20charged%20because%20of%20%E2%80%9Cqualified%20immunity%E2%80%9D.%20There%20is%20no%20reason%20government%20officials%20should%20be%20protected%20for%20violations%20that%20non-government%20officials%20are%20not.%20They%20are%20not%20above%20the%20law%2C%20and%20neither%20are%20we.%20I%20am%20asking%20you%20to%20voice%20support%20for%20the%20Ending%20Qualified%20Immunity%20Act%20(H.%20R.%207085)%20to%20our%20state%20Congresspeople.%0A%0AThank%20you%2C%0A",
+    "Anton's Law": "%20I%20am%20emailing%20today%20to%20ask%20you%20to%20support%20Anton%E2%80%99s%20Law%20(House%20Bill%201090).%20In%20light%20of%20the%20murder%20of%20George%20Floyd%20and%20the%20consequent%20anger%20over%20police%20brutality%2C%20another%20case%20from%202018%20has%20been%20brought%20to%20light.%20In%20September%20of%202018%2C%2019-year-old%20Anton%20Black%20was%20killed%20in%20an%20encounter%20with%20Greensboro%20police%20officers.%20His%20case%20scarily%20resembles%20that%20of%20George%20Floyd-%20a%20black%20man%2C%20yelling%20not%20to%20die%2C%20killed%20by%20force%20by%20a%20handful%20of%20officers.%20This%20bill%20would%20seek%20to%20modernize%20standards%20for%20the%20use%20of%20deadly%20force%20by%20officers%20and%20reform%20the%20Maryland%20Public%20Information%20Act%2C%20which%20prevents%20some%20information%20from%20being%20shared%20with%20the%20public%20while%20shielding%20personnel%20files%20of%20police%20officers.%20It%20would%20also%20remove%20privileges%20that%20currently%20allow%20police%20officers%20only%20to%20be%20interrogated%20and%20investigated%20by%20sworn%20officers%20and%20would%20establish%20police%20use-of-force%20standards.%20The%20bill%20was%20introduced%20last%20year%20but%20was%20pushed%20down%20by%20opposition%20from%20the%20police%20officers.%20Now%20that%20the%20Black%20Lives%20Matter%20movement%20is%20gaining%20more%20traction%2C%20it%E2%80%99s%20necessary%20for%20Anton%E2%80%99s%20Law%20to%20pass.%20I%20am%20asking%20for%20you%20to%20support%20and%20help%20pass%20Anton%E2%80%99s%20Law%20(House%20Bill%201090).%0D%0A%0D%0AThank%20you%2C%0D%0A",
+    "Maryland House Bill 488 and Maryland Senate Bill 554": "%20I%20want%20to%20voice%20my%20support%20for%20Maryland%20House%20Bill%20488%20and%20Senate%20Bill%20554%20regarding%20banning%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense.%20LGBTQ%2B%20panic%20defense%20is%20a%20legal%20strategy%20that%20asks%20a%20jury%20to%20find%20that%20a%20victim%E2%80%99s%20sexual%20orientation%20or%20gender%20identity%2Fexpression%20is%20to%20blame%20for%20a%20defendant%E2%80%99s%20violent%20reaction%2C%20including%20murder.%20Although%20the%20LGBTQ%2B%20Panic%20Defense%20has%20been%20debunked%20and%20removed%20from%20the%20DSM%20by%20the%20American%20Psychological%20Association%20in%201973%2C%20legal%20defense%20teams%20continue%20to%20use%20it.%20It%20is%20still%20legal%20in%2040%20states.%20I%20don%E2%80%99t%20stand%20for%20this-%20being%20outraged%20at%20someone%E2%80%99s%20sexual%20orientation%20is%20no%20justification%20for%20violence%2C%20especially%20murder.%20One%20of%20the%20most%20recognized%20cases%20that%20employed%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense%20was%20that%20of%20Matthew%20Shepard%20in%201998.%20Shepard%2C%20a%2021-year-old%20college%20student%2C%20was%20beaten%20to%20death%20by%20two%20other%20men%20who%20attempted%20to%20use%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense%20to%20excuse%20their%20actions.%20This%20legal%20tactic%20has%20been%20banned%20in%2010%20states%2C%20and%20Maryland%20is%20one%20of%20the%209%20states%20working%20on%20banning%20it%20currently.%20I%20strongly%20urge%20you%20to%20support%20and%20push%20for%20passing%20Maryland%20House%20Bill%20488%20and%20Senate%20Bill%20553%2C%20about%20banning%20the%20LGBTQ%2B%20%E2%80%9Cpanic%E2%80%9D%20defense.%0D%0A%0D%0ASincerely%2C%0D%0A",
+    "MD Senate Bill 993 (Inclusive School's Act)":"%20I%20wanted%20to%20voice%20my%20support%20for%20SB0993%20regarding%20the%20Inclusive%20School%20Act.%0A%0ADiscrimination%20still%20exists%20in%20our%20schools%20through%20bullying%2C%20harassment%2C%20and%20a%20lack%20of%20policies%20protecting%20students.%20In%202013%2C%20GLSEN%20did%20a%20national%20study%20and%20found%20these%20problems%20in%20our%20schools.%20The%20Baltimore%20Sun%20reported%20that%20%E2%80%9CBeyond%20peer%20harassment%2C%20the%20Maryland%20study%20%5Balong%20with%20other%20states%5D%20found%20many%20LGBT%20students%20in%20Maryland%20lacked%20supportive%20faculty%2C%20did%20not%20have%20access%20to%20educational%20materials%20on%20LGBT%20%E2%80%98people%2C%20history%2C%20and%20events%2C%E2%80%99%20and%20did%20not%20have%20LGBT-inclusive%20anti-bullying%20policies%20protecting%20them%20--%20all%20things%20that%20improve%20school%20climates%20for%20such%20students%20when%20in%20place.%E2%80%9D%0A%0ACurrently%2C%20Maryland%E2%80%99s%20education%20laws%20do%20not%20have%20codified%20anti-discrimination%20protections%2C%20meaning%20students%20who%20face%20discrimination%20don%E2%80%99t%20have%20policies%20that%20explicitly%20state%20how%20they%20can%20demand%20justice.%20Although%20federal%20law%20protects%20discrimination%20against%20students%2C%20these%20laws%20do%20not%20protect%20students%20from%20discrimination%20based%20on%20marital%20status%2C%20sexual%20orientation%2C%20or%20gender%20identity.%20To%20combat%20this%2C%20HB1204%20was%20introduced%20in%20the%20House%2C%20and%20after%20three%20readings%2C%20it%20was%20passed%20in%20the%20House.%20HB1204%20prohibits%20retaliation%20against%20a%20student%2C%20parent%2C%20or%20guardian%20who%20files%20a%20complaint%20of%20discrimination%20and%20cuts%20public%20funding%20to%20all%20schools%20that%20don%E2%80%99t%20put%20in%20anti-discrimination%20protections%20for%20all%20students%20K-12.%20Unfortunately%2C%20by%20the%20time%20it%20was%20sent%20to%20the%20Senate%2C%20an%20adjournment%20sine%20die%20went%20into%20place%2C%20and%20now%2C%20the%20bill%20may%20not%20be%20reintroduced%20into%20the%20Senate.%0A%0ASB0993%20would%20enshrine%20the%20Maryland%20State%20Department%20of%20Education%E2%80%99s%20existing%20non-discrimination%20guidance%20for%20students%20into%20law.%20Unlike%20laws%20regarding%20employment%2C%20fair%20housing%2C%20and%20others%2C%20Maryland%E2%80%99s%20education%20laws%20do%20not%20provide%20the%20legal%20protections%20of%20a%20codified%20anti-discrimination%20policy.%20%20This%20law%20is%20crucial%20in%20providing%20students%20with%20a%20safe%2C%20affirming%2C%20and%20inclusive%20environment%20to%20learn%20and%20express%20themselves%20without%20fear%20of%20violence%2C%20discrimination%2C%20or%20retaliation.%20Specifically%2C%20we%20need%20these%20protections%20for%20LGBTQ%20students%20who%20are%20more%20likely%20to%20experience%20discrimination%20and%20harassment%20with%20dangerous%20consequences.%20LGBTQ%20students%20have%20higher%20suicide%20rates%20than%20their%20heterosexual%20and%20cisgender%20peers.%20We%20need%20to%20do%20better%20to%20protect%20these%20students.%20This%20law%20would%20make%20schools%20provide%20pathways%20to%20file%20complaints%20and%20resolve%20cases%20of%20discrimination.%20I%20firmly%20believe%20that%20this%20state%20should%20create%20accepting%20and%20supporting%20atmospheres%20for%20every%20one%20of%20its%20students.%20To%20fully%20support%20our%20students%20and%20help%20them%20succeed%2C%20I%20feel%20it%20necessary%20to%20reintroduce%2C%20support%2C%20and%20pass%20SB0993%20regarding%20the%20Inclusive%20School%20Act.%0A%0AThank%20you%2C%20%0A"
+  }
+  if ((document.getElementById("address").value.length != 0)){
     var listofemails = [];
     var countything;
-    $.getJSON('https://www.googleapis.com/civicinfo/v2/representatives?address='.concat(addressuser,"&key=<YOUR_API_KEY>"),  function(data){
+    $.getJSON('https://www.googleapis.com/civicinfo/v2/representatives?address='.concat(addressuser,"&key=AIzaSyA8xYv8CCjRW_P2YNM-Uo1Gkjs1tECz7zM"),  function(data){ //CHANGE BACK THE API KEY
       if (advocate in hbillsend) {
         for (i = 0; i < data.officials.length; i++) {
           if (typeof (data.officials[i].emails) !== 'undefined'){ 
@@ -754,24 +837,33 @@ function emailsend() {
               }
             }
           }
+          if (advocate in hsbillsend){
+            for (i = 0; i < data.officials.length; i++) {
+              if (typeof (data.officials[i].emails) !== 'undefined'){
+                if ((data.officials[i].emails[0].indexOf('@senate.state.md.us') != -1) || (data.officials[i].emails[0].indexOf('@house.state.md.us') != -1)){
+                    listofemails.push(data.officials[i].emails[0])
+                }
+              }
+            }
+          }
       }
       countything = zipcodecounty[data.normalizedInput.zip]
     });
-      if ((advocate in billsend) || (advocate in hbillsend)){
-        if (advocate in hbillsend){
-          return ("mailto:".concat(listofemails.join(),"?subject=",advocate,"&body=","Hello,%0A%0AMy%20name%20is%20",localname,"%20and%20I%20am%20a%20resident%20of%20",countything,", Maryland.",hbillsend[advocate],localname,"%0A%0AHere is my home address so that you know I'm in your district:%0A",document.getElementById("useraddress").value));
-        } else {
-          return ("mailto:".concat(listofemails.join(),"?subject=",advocate,"&body=","Hello,%0A%0AMy%20name%20is%20",localname,"%20and%20I%20am%20a%20resident%20of%20",countything,", Maryland.",billsend[advocate],localname,"%0A%0AHere is my home address so that you know I'm in your district:%0A",document.getElementById("useraddress").value));
-      }
+    if (advocate in allbills){
+          document.getElementById("error").innerHTML = "";
+          return ("mailto:".concat(listofemails.join(),"?subject=",advocate,"&body=","Hello,%0A%0AMy%20name%20is%20",localname,"%20and%20I%20am%20a%20resident%20of%20",countything,", Maryland.",allbills[advocate],localname,"%0A",document.getElementById("address").value));
+    } else {
+      document.getElementById("error").innerHTML = "Please select the bill you want to send an email about.";
+      return (emailrep.html)
     }
 
   } else {
-    if ((advocate in billsend) || (advocate in hbillsend)){
-        if (advocate in hbillsend){
-          return ("mailto:".concat("?subject=",advocate,"&body=","Hello,%0A%0AMy%20name%20is%20",localname,"%20and%20I%20am%20a%20resident%20of%20","[insert county here], Maryland.",hbillsend[advocate],localname,"%0A%0AHere is my home address so that you know I'm in your district:%0A[insert address here]"));
-        } else {
-          return ("mailto:".concat("?subject=",advocate,"&body=","Hello,%0A%0AMy%20name%20is%20",localname,"%20and%20I%20am%20a%20resident%20of%20","[insert county here], Maryland.",billsend[advocate],localname,"%0A%0AHere is my home address so that you know I'm in your district:%0A[insert address here]"));
-      }
+    if (advocate in allbills){
+      document.getElementById("error").innerHTML = "";
+      return ("mailto:".concat("?subject=",advocate,"&body=","Hello,%0A%0AMy%20name%20is%20",localname,"%20and%20I%20am%20a%20resident%20of%20","[insert county here], Maryland.",allbills[advocate],localname,"%0A[insert address here]"));
+    } else {
+      document.getElementById("error").innerHTML = "Please select the bill you want to send an email about.";
+      return (emailrep.html)
     }
   }
   $.ajaxSetup({
